@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Movie from './Movie';
@@ -23,14 +23,32 @@ const movies = [
   },
 ]
 
-function App() {
+class App extends Component {
+  
+  // componentWillMount(){
+  //   console.log('compWillMT')
+  // }
+  state = {
+    greeting:'Hello'
+  }
+  componentDidMount(){
+    setTimeout(() =>{
+      // this.state.greeting ='something'
+      this.setState({
+        greeting : 'hello again'
+      })
+    },5000)
+  }
+  render (){
     return (
         <div className="App">
-            {movies.map(movie =>{
-              return <Movie title={movie.title} poster={movie.poster} />
+            {this.state.greeting}
+            {movies.map((movie, index)=>{
+              return <Movie title={movie.title} poster={movie.poster} key={index} />
             })}      
         </div>
-    );
+      );
     }
-
+  }
+  
 export default App;
