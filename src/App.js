@@ -4,46 +4,50 @@ import './App.css';
 import Movie from './Movie';
 
 
-const movies = [
-  {
-    title:"Matrix",
-    poster:"thisis matrix poster"
-  },
-  {
-    title:"oldboy",
-    poster:"thisis oldboy poster"
-  },
-  {
-    title:"cats",
-    poster:"thisis cats poster"
-  },
-  {
-    title:"starwars",
-    poster:"thisis starwars poster"
-  },
-]
-
 class App extends Component {
   
   // componentWillMount(){
   //   console.log('compWillMT')
   // }
   state = {
-    greeting:'Hello'
+    greeting:'Hello',
+    movies : [
+      {
+        title:"Matrix",
+        poster:"thisis matrix poster"
+      },
+      {
+        title:"oldboy",
+        poster:"thisis oldboy poster"
+      },
+      {
+        title:"cats",
+        poster:"thisis cats poster"
+      },
+      {
+        title:"starwars",
+        poster:"thisis starwars poster"
+      },
+    ]
   }
   componentDidMount(){
     setTimeout(() =>{
-      // this.state.greeting ='something'
-      this.setState({
-        greeting : 'hello again'
-      })
-    },5000)
-  }
+        this.setState({
+          movies : [
+            ...this.state.movies,
+            {
+              title:"test",
+               poster:"thisis starwars poster"
+            }
+          ]
+        })
+      }, 5000)
+    }
   render (){
     return (
         <div className="App">
             {this.state.greeting}
-            {movies.map((movie, index)=>{
+            {this.state.movies.map((movie, index)=>{
               return <Movie title={movie.title} poster={movie.poster} key={index} />
             })}      
         </div>
