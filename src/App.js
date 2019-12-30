@@ -10,32 +10,10 @@ class App extends Component {
   //   console.log('compWillMT')
   // }
   state = {
-    
-    
   }
   componentDidMount(){
-    setTimeout(() =>{
-        this.setState({
-          movies : [
-            {
-              title:"Matrix",
-              poster:"thisis matrix poster"
-            },
-            {
-              title:"oldboy",
-              poster:"thisis oldboy poster"
-            },
-            {
-              title:"cats",
-              poster:"thisis cats poster"
-            },
-            {
-              title:"starwars",
-              poster:"thisis starwars poster"
-            },
-          ]
-        })
-    }, 5000)
+    //https://yts.lt/api/v2/list_movies.json?sort_by=rating
+    fetch('https://yts.lt/api/v2/list_movies.json?sort_by=rating')
   }
 
   _renderMovies = () => {
